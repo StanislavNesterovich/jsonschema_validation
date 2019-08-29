@@ -2,14 +2,12 @@ from jsonschema import validate
 import yaml
 
 
+inventory = yaml.load(open("manoci.yaml"), Loader=yaml.FullLoader)
+schema = yaml.load(open('schema.yaml'), Loader=yaml.FullLoader)
+print(schema)
+
+validate(inventory, schema)
 
 
-
-good_instance = """
-testing: ['this1', 'is', 'a', 'test']
-"""
-validate(yaml.load(good_instance), yaml.load(open('schema.yaml'))) # passes
-
-# Now let try a bad instance...
 
 

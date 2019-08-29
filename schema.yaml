@@ -1,10 +1,9 @@
 type: object
-properties:
-  testing:
+localhost_fake:
+  hosts:
     type: array
     items:
       enum:
-        - this1
-        - is
-        - a
-        - test
+        - localhost
+required:
+  - localhost_fake
