@@ -1,0 +1,227 @@
+name: Validation inventory
+type: map
+mapping:
+  manoci:
+    type: map
+    required: True
+    mapping:
+      children:
+        type: map
+        required: True
+        mapping:
+          operations:
+            type: none
+            required: True
+          openshift:
+            type: none
+            required: True
+
+  operations:
+    type: map
+    required: True
+    mapping:
+      children:
+        type: map
+        required: True
+        mapping:
+          dvm:
+            type: none
+            required: True
+          monitoring:
+            type: none
+            required: True
+          logging:
+            type: none
+            required: True
+          localhost_fake:
+            type: none
+            required: True
+
+  localhost_fake:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: str
+        required: True
+
+  dvm:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          dvm:
+            type: map
+            mapping:
+              ansible_host:
+                type: any
+
+  logging:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+
+  monitoring-left:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+
+  openshift:
+    type: map
+    required: True
+    mapping:
+      children:
+        type: map
+        required: True
+        mapping:
+          balancer:
+            type: none
+            required: True
+          infra:
+            type: none
+            required: True
+          master:
+            type: none
+            required: True
+          gluster:
+            type: none
+            required: True
+          node:
+            type: none
+            required: True
+
+  balancer:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                unique: True
+                required: True
+                type: any
+              internal_ip:
+                unique: True
+                required: True
+                type: any
+
+  infra:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+              internal_ip:
+                required: True
+                type: any
+
+  master:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+              internal_ip:
+                required: True
+                type: any
+
+  gluster:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+              internal_ip:
+                required: True
+                type: any
+
+  node:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+              internal_ip:
+                required: True
+                type: any
+
+  all:
+    type: map
+    required: True
+    mapping:
+      vars:
+        type: map
+        required: True
+        mapping:
+          ansible_user:
+            type: str
+            required: True
+
+

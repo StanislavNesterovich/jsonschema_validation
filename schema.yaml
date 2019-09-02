@@ -1,9 +1,45 @@
 type: object
-localhost_fake:
-  hosts:
-    type: array
-    items:
-      enum:
-        - localhost
+properties:
+  manoci:
+    type: object
+    properties:
+      children:
+        type: object
+        properties:
+          openshift:
+            maxLength: 0
+          operations:
+            maxLength: 3
+        required:
+          - openshift
+          - operations
+    required:
+      - children
 required:
-  - localhost_fake
+  - manoci
+
+type: object
+properties:
+  operations:
+    type: object
+    properties:
+      children:
+        type: object
+        properties:
+          dvm:
+            maxLength: 0
+          monitoring:
+            maxLength: 3
+          logging:
+            maxLength: 3
+          localhost_fake:
+            maxLength: 3
+        required:
+          - dvm
+          - monitoring
+          - logging
+          - localhost_fake
+    required:
+      - children
+required:
+  - operations
