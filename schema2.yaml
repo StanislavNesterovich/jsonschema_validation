@@ -1,7 +1,7 @@
 name: Validation inventory
 type: map
 mapping:
-  manoci:
+  environment_name:
     type: map
     required: True
     mapping:
@@ -27,7 +27,10 @@ mapping:
           dvm:
             type: none
             required: True
-          monitoring:
+          monitoring-left:
+            type: none
+            required: True
+          monitoring-right:
             type: none
             required: True
           logging:
@@ -36,60 +39,6 @@ mapping:
           localhost_fake:
             type: none
             required: True
-
-  localhost_fake:
-    type: map
-    required: True
-    mapping:
-      hosts:
-        type: str
-        required: True
-
-  dvm:
-    type: map
-    required: True
-    mapping:
-      hosts:
-        type: map
-        required: True
-        mapping:
-          dvm:
-            type: map
-            mapping:
-              ansible_host:
-                type: any
-
-  logging:
-    type: map
-    required: True
-    mapping:
-      hosts:
-        type: map
-        required: True
-        mapping:
-          regex;(.*):
-            type: map
-            required: True
-            mapping:
-              ansible_host:
-                required: True
-                type: any
-
-  monitoring-left:
-    type: map
-    required: True
-    mapping:
-      hosts:
-        type: map
-        required: True
-        mapping:
-          regex;(.*):
-            type: map
-            required: True
-            mapping:
-              ansible_host:
-                required: True
-                type: any
 
   openshift:
     type: map
@@ -114,6 +63,84 @@ mapping:
           node:
             type: none
             required: True
+
+  localhost_fake:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: str
+        required: True
+
+  dvm:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+
+  logging:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+              internal_ip:
+                type: any
+
+  monitoring-left:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+              internal_ip:
+                type: any
+
+
+  monitoring-right:
+    type: map
+    required: True
+    mapping:
+      hosts:
+        type: map
+        required: True
+        mapping:
+          regex;(.*):
+            type: map
+            required: True
+            mapping:
+              ansible_host:
+                required: True
+                type: any
+              internal_ip:
+                type: any
 
   balancer:
     type: map
@@ -192,6 +219,8 @@ mapping:
               internal_ip:
                 required: True
                 type: any
+              regex;(.*):
+                type: any
 
   node:
     type: map
@@ -211,6 +240,22 @@ mapping:
               internal_ip:
                 required: True
                 type: any
+              regex;(.*):
+                type: any
+
+  left:
+    type: map
+    required: True
+    mapping:
+      regex;(.*):
+        type: any
+
+  right:
+    type: map
+    required: True
+    mapping:
+      regex;(.*):
+        type: any
 
   all:
     type: map

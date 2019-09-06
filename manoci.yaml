@@ -1,12 +1,12 @@
-manoci:
+manodr-vcloud:
   children:
-    operations: null
-    openshift: null
+    operations
+    openshift
 
 operations:
   children:
     dvm: null
-    monitoring: null
+    monitoring-left: null
     logging: null
     localhost_fake: null
 
@@ -16,18 +16,20 @@ localhost_fake:
 
 dvm:
   hosts:
-    dvm:
-      ansible_host: 10.109.12.91
+    dvm2:
+      ansible_host: 10.109.11.65
 
 logging:
   hosts:
     logging-left-01:
-      ansible_host: 10.109.12.59
+      ansible_host: 10.109.11.95
+      internal_ip: 192.168.0.80
 
 monitoring-left:
   hosts:
     monitoring-left-01:
-      ansible_host: 10.109.12.52
+      ansible_host: 10.109.11.82
+      internal_ip: 192.168.0.70
 
 openshift:
   children:
@@ -40,56 +42,58 @@ openshift:
 balancer:
   hosts:
     balancer-left-01:
-      ansible_host: 10.109.12.111
+      ansible_host: 10.109.11.77
       internal_ip: 192.168.0.20
     balancer-left-02:
-      ansible_host: 10.109.12.112
+      ansible_host: 10.109.11.86
       internal_ip: 192.168.0.21
 
 infra:
   hosts:
     infra-left-01:
-      ansible_host: 10.109.12.87
+      ansible_host: 10.109.11.71
       internal_ip: 192.168.0.30
     infra-left-02:
-      ansible_host: 10.109.12.89
+      ansible_host: 10.109.11.92
       internal_ip: 192.168.0.31
 
 master:
   hosts:
     master-left-01:
-      ansible_host: 10.109.12.101
+      ansible_host: 10.109.11.62
       internal_ip: 192.168.0.40
     master-left-02:
-      ansible_host: 10.109.12.104
+      ansible_host: 10.109.11.91
       internal_ip: 192.168.0.41
     master-left-03:
-      ansible_host: 10.109.12.109
+      ansible_host: 10.109.11.87
       internal_ip: 192.168.0.42
 
 gluster:
   hosts:
     compute-left-01:
-      ansible_host: 10.109.12.96
+      ansible_host: 10.109.11.90
       internal_ip: 192.168.0.50
     compute-left-02:
-      ansible_host: 10.109.12.97
+      ansible_host: 10.109.11.93
       internal_ip: 192.168.0.51
     compute-left-03:
-      ansible_host: 10.109.12.98
+      ansible_host: 10.109.11.69
       internal_ip: 192.168.0.52
 
 node:
   hosts:
     compute-left-04:
-      ansible_host: 10.109.12.99
+      ansible_host: 10.109.11.89
       internal_ip: 192.168.0.53
     compute-left-05:
-      ansible_host: 10.109.12.94
+      ansible_host: 10.109.11.96
       internal_ip: 192.168.0.54
     compute-left-06:
-      ansible_host: 10.109.12.92
+      ansible_host: 10.109.11.94
       internal_ip: 192.168.0.55
+      mongo1: 1
+      mongo2: 2
 
 all:
   vars:
